@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fill Your Details</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { text-align: center; margin-bottom: 20px; }
+    .form-container { max-width: 600px; margin: 0 auto; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; }
+    input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+    .btn { background: #ff6347; color: white; padding: 10px 20px; border: none; cursor: pointer; width: 100%; font-size: 1.1em; transition: background 0.3s ease; }
+    .btn:hover { background: #ff4500; }
+    .product-info { text-align: center; margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+  </style>
+</head>
+<body>
+
+  <h1>Fill Your Details</h1>
+
+  <div class="form-container">
+    <div class="product-info">
+      <h3 id="product-name">Product Name</h3>
+      <p id="product-price">Product Price</p>
+    </div>
+
+    <form id="checkout-form">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" required>
+      </div>
+      <button type="submit" class="btn">Proceed to Payment</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const productName = localStorage.getItem('productName');
+      const productPrice = localStorage.getItem('productPrice');
+      document.getElementById('product-name').textContent = productName;
+      document.getElementById('product-price').textContent = productPrice;
+    });
+
+    document.getElementById('checkout-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      window.location.href = 'payment.html';
+    });
+  </script>
+
+</body>
+</html>
